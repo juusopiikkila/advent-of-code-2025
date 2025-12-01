@@ -5,10 +5,10 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@ark/util@npm:0.53.0":
-  version: 0.53.0
-  resolution: "@ark/util@npm:0.53.0"
-  checksum: 10c0/a3fb8f3c7ad0815de3e0eb33463944f21c666a6d646eac4c1897eeb55e160f0ded3c54dafe02a9209298e93a2869368118aff31028dcf4ee87a254b99496959f
+"@ark/util@npm:0.55.0":
+  version: 0.55.0
+  resolution: "@ark/util@npm:0.55.0"
+  checksum: 10c0/bde305461432be11860995101120ce73fc7a49d0180dc34807555903450b8d7ecf5fccde3ac6ce2ada3381b54f1a4c9016a4b70598d85746610bd122348ede51
   languageName: node
   linkType: hard
 
@@ -2137,7 +2137,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^8.46.2"
     "@typescript-eslint/parser": "npm:^8.46.2"
     "@vitest/coverage-v8": "npm:^4.0.2"
-    arkregex: "npm:^0.0.2"
+    arkregex: "npm:^0.0.3"
     async: "npm:^3.2.6"
     bignumber.js: "npm:^9.3.1"
     compute-lcm: "npm:^1.1.2"
@@ -2183,12 +2183,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"arkregex@npm:^0.0.2":
-  version: 0.0.2
-  resolution: "arkregex@npm:0.0.2"
+"arkregex@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "arkregex@npm:0.0.3"
   dependencies:
-    "@ark/util": "npm:0.53.0"
-  checksum: 10c0/e3f4572058b3136b5d882b38105a50f726f22ea06222d1e3fd46f6d82954f7c7a2b24e516359a2d3b6970f91b78096bf33d1999bf507fd55a1aaea491961e435
+    "@ark/util": "npm:0.55.0"
+  checksum: 10c0/287cc2ef50cde2cf20afd7c46dc4f05a54314638cdf1a1716fbd4362a9e05441bf85b75e52d181515c492420c78916374721a9aaa2a84d2074cc25b2b04b11a7
   languageName: node
   linkType: hard
 

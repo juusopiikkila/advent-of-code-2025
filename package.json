@@ -15,7 +15,7 @@
         "test:cov": "VITE_CJS_IGNORE_WARNING=true vitest --coverage"
     },
     "dependencies": {
-        "arkregex": "^0.0.2",
+        "arkregex": "^0.0.3",
         "async": "^3.2.6",
         "bignumber.js": "^9.3.1",
         "compute-lcm": "^1.1.2",
