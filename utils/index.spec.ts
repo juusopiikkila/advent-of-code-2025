@@ -5,6 +5,7 @@ import {
     getManhattanDistance,
     parseInputString,
     printAnswer,
+    ProgramBase,
     readFileToArray,
 } from '.';
 
@@ -76,6 +77,25 @@ describe('parseInputString', () => {
         `;
 
         expect(parseInputString(input)).toEqual(['1', '2', '3', '4', '', '5']);
+    });
+
+    it('should remove leading empty line if present', () => {
+        const input = `
+1
+2
+3
+`;
+
+        expect(parseInputString(input)).toEqual(['1', '2', '3']);
+    });
+
+    it('should not remove leading empty line if data[0] is not empty', () => {
+        const input = `1
+2
+3
+`;
+
+        expect(parseInputString(input)).toEqual(['1', '2', '3']);
     });
 });
 
@@ -175,5 +195,62 @@ describe('findPath', () => {
 describe('getManhattanDistance', () => {
     it('should get the manhattan distance', () => {
         expect(getManhattanDistance([1, 1], [5, 5])).toEqual(8);
+    });
+});
+
+describe('ProgramBase', () => {
+    class TestProgram extends ProgramBase {
+        runPart1(): number {
+            return 1;
+        }
+
+        runPart2(): number {
+            return 2;
+        }
+    }
+
+    describe('log', () => {
+        let consoleSpy: ReturnType<typeof vi.spyOn>;
+        let program: TestProgram;
+
+        beforeEach(() => {
+            consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+            program = new TestProgram();
+        });
+
+        afterEach(() => {
+            consoleSpy.mockRestore();
+        });
+
+        it('should not log when debug is false', () => {
+            program.debug = false;
+            program.log('test message', 42);
+
+            expect(consoleSpy).not.toHaveBeenCalled();
+        });
+
+        it('should log when debug is true', () => {
+            program.debug = true;
+            program.log('test message', 42);
+
+            expect(consoleSpy).toHaveBeenCalledTimes(1);
+            expect(consoleSpy).toHaveBeenCalledWith('test message', 42);
+        });
+
+        it('should handle multiple arguments', () => {
+            program.debug = true;
+            program.log('message', { foo: 'bar' }, [1, 2, 3], null);
+
+            expect(consoleSpy).toHaveBeenCalledTimes(1);
+            expect(consoleSpy).toHaveBeenCalledWith('message', { foo: 'bar' }, [1, 2, 3], null);
+        });
+
+        it('should handle no arguments', () => {
+            program.debug = true;
+            program.log();
+
+            expect(consoleSpy).toHaveBeenCalledTimes(1);
+            expect(consoleSpy).toHaveBeenCalledWith();
+        });
     });
 });
