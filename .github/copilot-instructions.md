@@ -3,7 +3,7 @@
 Purpose: give a concise, actionable summary that helps an AI code agent be productive quickly.
 
 - Project type
-  - Node + TypeScript puzzle collection (Advent of Code 2018). Uses Yarn (Berry) v4 as package manager (`package.json` contains `packageManager: "yarn@4.10.3"`).
+  - Node + TypeScript puzzle collection (Advent of Code 2025). Uses Yarn (Berry) v4 as package manager (`package.json` contains `packageManager: "yarn@4.10.3"`).
   - Tests: Vitest. Runtime: Node (CommonJS modules, `tsconfig.json` module=commonjs, target=ES2022).
 
 - Where the "work" lives
@@ -30,7 +30,7 @@ Purpose: give a concise, actionable summary that helps an AI code agent be produ
   - Install deps: `yarn install` (Project uses Yarn v4; lockfile will be updated by the command if necessary).
   - Fetch puzzle input and scaffolding: create `.env` with `SESSION_TOKEN=your-token` then:
     - `yarn fetch` (defaults to today's day)
-    - `yarn fetch --day 5 --year 2018` (explicit day/year)
+    - `yarn fetch --day 5 --year 2025` (explicit day/year)
     - `fetch.ts` will create `./<day>/` by copying `template/` files and saving `input.txt`.
   - Run a day's solution (dev watcher):
     - `yarn dev` (runs `tsx watch index.ts` — watches the root runner)
