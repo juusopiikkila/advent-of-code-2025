@@ -11,6 +11,8 @@ export default defineConfig([
             'canonical/filename-match-exported': 'off',
             'unicorn/no-array-reduce': 'off',
             'no-implicit-coercion': 'off',
+            '@stylistic/line-comment-position': 'off',
+            'no-inline-comments': 'off',
         },
     },
     {
