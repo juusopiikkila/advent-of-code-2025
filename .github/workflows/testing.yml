@@ -1,0 +1,24 @@
+name: Testing
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - run: yarn install
+      - run: yarn test:cov
+
+      - name: Cov Badge And Publish
+        uses: nolleh/jest-badge-deploy-action@v1.0.7
+        with:
+          folder: badges
