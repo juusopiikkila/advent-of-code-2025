@@ -13,6 +13,7 @@ export default defineConfig([
             'no-implicit-coercion': 'off',
             '@stylistic/line-comment-position': 'off',
             'no-inline-comments': 'off',
+            'unicorn/no-array-sort': 'off',
         },
     },
     {
