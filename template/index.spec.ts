@@ -9,7 +9,7 @@ describe('Day {day}', () => {
     });
 
     describe('Part 1', () => {
-        it('should return 0', () => {
+        it('should solve the puzzle', () => {
             const output = program.runPart1(parseInputString(`
                 #input
             `));
@@ -19,7 +19,7 @@ describe('Day {day}', () => {
     });
 
     describe('Part 2', () => {
-        it('should return 1', () => {
+        it('should solve the puzzle', () => {
             const output = program.runPart2(parseInputString(`
                 #input
             `));
