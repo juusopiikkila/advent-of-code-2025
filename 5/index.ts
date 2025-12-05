@@ -46,6 +46,7 @@ export default class Program extends ProgramBase {
 
     /**
      * Create events map from ranges
+     *
      * Each range creates a +1 event at start and -1 event at end+1
      */
     createRangeEvents(ranges: Range[]): Map<number, number> {
