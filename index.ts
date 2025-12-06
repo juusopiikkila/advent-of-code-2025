@@ -16,7 +16,7 @@ async function main() {
     console.time('Execution time');
 
     const part1Instance = new module.default() as InstanceType<typeof ProgramBase>;
-    const part1Answer = await part1Instance.runPart1(input);
+    const part1Answer = await part1Instance.runPart1([...input]);
     console.timeEnd('Execution time');
 
     printAnswer(part1Answer);
@@ -27,7 +27,7 @@ async function main() {
     console.time('Execution time');
 
     const part2Instance = new module.default() as InstanceType<typeof ProgramBase>;
-    const part2Answer = await part2Instance.runPart2(input);
+    const part2Answer = await part2Instance.runPart2([...input]);
     console.timeEnd('Execution time');
 
     printAnswer(part2Answer);
