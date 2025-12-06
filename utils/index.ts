@@ -30,7 +30,13 @@ export abstract class ProgramBase {
 
 export async function readFileToArray(path: string): Promise<string[]> {
     const data = await readFile(path);
-    return data.toString().split('\n').slice(0, -1);
+    const rows = data.toString().split('\n');
+
+    if (rows.at(-1) === '') {
+        rows.pop();
+    }
+
+    return rows;
 }
 
 export function printAnswer(answer: number | string[] | string): void {
@@ -43,13 +49,20 @@ export function printAnswer(answer: number | string[] | string): void {
 }
 
 export function parseInputString(input: string): string[] {
-    const data = input
-        .split('\n')
-        .map((row) => row.trim())
-        .slice(0, -1);
+    let data = input.split('\n');
 
     if (data[0] === '') {
         data.shift();
+    }
+
+    const regex = /^\s+/u;
+    const prefix = regex.exec(data[0]);
+    const prefixLength = prefix?.[0].length ?? 0;
+
+    data = data.map((line) => line.slice(prefixLength));
+
+    if (data.at(-1) === '') {
+        data.pop();
     }
 
     return data;

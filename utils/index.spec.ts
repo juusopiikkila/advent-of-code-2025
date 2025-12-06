@@ -34,6 +34,24 @@ describe('readFileToArray', () => {
 
         readFileSpy.mockRestore();
     });
+
+    it('should handle file without trailing newline', async () => {
+        const readFileSpy = vi.spyOn(fsExtra, 'readFile').mockImplementation(() => ([
+            '1',
+            '2',
+            '3',
+        ].join('\n')));
+
+        const filePath = '/path/to/file.json';
+
+        const data = await readFileToArray(filePath);
+
+        expect(readFileSpy).toHaveBeenCalledWith(filePath);
+
+        expect(data).toEqual(['1', '2', '3']);
+
+        readFileSpy.mockRestore();
+    });
 });
 
 describe('printAnswer', () => {
@@ -94,6 +112,23 @@ describe('parseInputString', () => {
 2
 3
 `;
+
+        expect(parseInputString(input)).toEqual(['1', '2', '3']);
+    });
+
+    it('should handle input without trailing newline', () => {
+        const input = `
+            1
+            2
+            3`;
+
+        expect(parseInputString(input)).toEqual(['1', '2', '3']);
+    });
+
+    it('should handle input with no prefix whitespace and no trailing newline', () => {
+        const input = `1
+2
+3`;
 
         expect(parseInputString(input)).toEqual(['1', '2', '3']);
     });
