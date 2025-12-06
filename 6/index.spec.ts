@@ -151,7 +151,7 @@ describe('Day 6', () => {
             `));
 
             expect(output).toHaveLength(5);
-            expect(output.map(c => c.operator)).toEqual(['*', '+', '*', '+', '*']);
+            expect(output.map((column) => column.operator)).toEqual(['*', '+', '*', '+', '*']);
         });
     });
 
