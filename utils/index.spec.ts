@@ -2,6 +2,7 @@ import * as fsExtra from 'fs-extra';
 import {
     findPath,
     generateMap,
+    getEuclideanDistance,
     getManhattanDistance,
     parseInputString,
     printAnswer,
@@ -140,6 +141,53 @@ describe('generateMap', () => {
             [0, 0],
             [0, 0],
         ]);
+    });
+});
+
+describe('getEuclideanDistance', () => {
+    it('should calculate distance between same point', () => {
+        expect(getEuclideanDistance([0, 0], [0, 0])).toBe(0);
+    });
+
+    it('should calculate horizontal distance', () => {
+        expect(getEuclideanDistance([0, 0], [3, 0])).toBe(3);
+    });
+
+    it('should calculate vertical distance', () => {
+        expect(getEuclideanDistance([0, 0], [0, 4])).toBe(4);
+    });
+
+    it('should calculate diagonal distance (3-4-5 triangle)', () => {
+        expect(getEuclideanDistance([0, 0], [3, 4])).toBe(5);
+    });
+
+    it('should calculate distance with negative coordinates', () => {
+        expect(getEuclideanDistance([-1, -1], [2, 3])).toBe(5);
+    });
+
+    it('should handle floating point results', () => {
+        expect(getEuclideanDistance([0, 0], [1, 1])).toBeCloseTo(Math.sqrt(2));
+    });
+
+    it('should calculate 3D distance between same point', () => {
+        expect(getEuclideanDistance([0, 0, 0], [0, 0, 0])).toBe(0);
+    });
+
+    it('should calculate 3D distance along single axis', () => {
+        expect(getEuclideanDistance([0, 0, 0], [0, 0, 5])).toBe(5);
+    });
+
+    it('should calculate 3D distance (3-4-5 triangle in 3D space)', () => {
+        expect(getEuclideanDistance([0, 0, 0], [3, 4, 0])).toBe(5);
+    });
+
+    it('should calculate 3D distance with all dimensions', () => {
+        // 2² + 3² + 6² = 4 + 9 + 36 = 49, sqrt(49) = 7
+        expect(getEuclideanDistance([0, 0, 0], [2, 3, 6])).toBe(7);
+    });
+
+    it('should calculate 3D distance with negative coordinates', () => {
+        expect(getEuclideanDistance([-1, -2, -3], [2, 2, 3])).toBe(Math.sqrt(9 + 16 + 36));
     });
 });
 

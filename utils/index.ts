@@ -112,3 +112,19 @@ export function getManhattanDistance(a: [number, number], b: [number, number]): 
 
     return distance;
 }
+
+export function getEuclideanDistance(a: [number, number], b: [number, number]): number;
+export function getEuclideanDistance(a: [number, number, number], b: [number, number, number]): number;
+export function getEuclideanDistance(
+    a: [number, number] | [number, number, number],
+    b: [number, number] | [number, number, number],
+): number {
+    let sumSquares = 0;
+
+    for (const [index, element] of a.entries()) {
+        const diff = b[index] - element;
+        sumSquares += diff * diff;
+    }
+
+    return Math.sqrt(sumSquares);
+}
