@@ -237,10 +237,20 @@ describe('Day 8', () => {
     });
 
     describe('Part 1', () => {
-        it('should solve the puzzle', () => {
-            const output = program.runPart1(sampleInput);
+        it('should solve the example with 10 attempts', () => {
+            const coords = program.parseInputToCoordinates(sampleInput);
+            const output = program.connectAndScoreCircuits(coords, 10);
 
             expect(output).toEqual(40);
+        });
+
+        it('should call runPart1 with 1000 attempts', () => {
+            // Test with small input to verify runPart1 works
+            const testInput = ['0,0,0', '1,0,0', '10,0,0'];
+            const output = program.runPart1(testInput);
+
+            // With 1000 attempts and only 3 coords, all will be connected
+            expect(output).toBeGreaterThan(0);
         });
     });
 

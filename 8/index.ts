@@ -208,7 +208,7 @@ export default class Program extends ProgramBase {
 
     runPart1(input: string[]) {
         const coords = this.parseInputToCoordinates(input);
-        return this.connectAndScoreCircuits(coords, 10);
+        return this.connectAndScoreCircuits(coords, 1000);
     }
 
     runPart2(input: string[]) {
